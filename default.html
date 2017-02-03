@@ -5,84 +5,58 @@
 	<title>Tyler Rules</title>
 	<link rel="Shortcut Icon" href="/favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="/img/favicon.ico" />
-	<link rel="stylesheet" href="css/main.css" />
 	<meta name="description" content="Tyler's Portfolio">
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta name="robots" content="all" />
 	<meta name="MSSmartTagsPreventParsing" content="true" />
-	<meta http-equiv="imagetoolbar" content="false" />
+	<meta http-equiv="imagetoolbar" content="false" />	
+	<style>
+		* { padding: 0; margin: 0; }
+		p { color: #4b4b4b; font-family: Helvetica; font-size: 16px; line-height: 24px; margin-bottom: 22px; -webkit-font-smoothing: antialiased; }
+		a { color: #000; font-weight: bold; text-decoration: none; }
+		a:hover { color: #549eb9; }
+		#about { width: 360px; padding: 0 0 0 150px; margin: 10px 50px 0 auto !important; }
+	</style>
 	<script type="text/javascript"> var domain = document.location.host;</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 	<script type="text/javascript" src="js/parallax.min.js"></script>
-
-</head>
-
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+	
+</head>	
+    
 <body>
-<section>
-  <canvas id='beerCanvas'></canvas>
-  <div id="parallax">
-	<div class="coming_content">
-		<h1 data-depth="0.4 class="layer"">Coming Soon</h1>
-		<div data-depth="0.2" class="separator_container layer">
-			<div class="separator line_separator">
-				<span>
-				  <svg xmlns="http://www.w3.org/2000/svg" width="320.864" height="320.864" viewBox="0 0 320.864 320.864"><path fill="#fff" d="M184.04 81.83c-1.89-5.1-3.46-28.63-3.926-55.05-.003-.1.107-.37.514-.37 2.092-.125 3.248-1.79 3.248-3.91V4c0-2.2-1.8-4-4-4H140.99c-2.2 0-4 1.8-4 4v18.5c0 2.123 1.06 3.77 3.152 3.89.673 0 .613.478.61.673-.463 26.677-2.035 49.67-3.925 54.77-11.12 29.993-35.884 27.39-35.884 63.393V273.96c0 49.536 24.92 47.044 59.49 46.82 34.57.224 59.49 2.716 59.49-46.82V145.226c0-36.002-24.764-33.4-35.883-63.394zm12.89 127.953c-5.845 8.89-31.005 30.02-36.458 30.02-5.338 0-30.727-21.21-36.532-30.02-2.907-4.41-4.97-9.277-4.627-15.678.605-11.325 9.866-20.678 21.208-20.678 11.66 0 18.45 12.44 19.915 12.44 1.675 0 8.755-12.44 19.914-12.44 11.34 0 20.6 9.353 21.206 20.678.342 6.4-1.713 11.247-4.627 15.678z"/></svg>
-				</span>
-			</div>
-		</div>
-		<h3 data-depth="0.1" class="layer">Until then, I live in a soda bottle.</h3>
-	</div>
-  </div>
-</section>
+<div id="app">
+  <h1>Hello App!</h1>
+  <p>
+    <!-- use router-link component for navigation. -->
+    <!-- specify the link by passing the `to` prop. -->
+    <!-- <router-link> will be rendered as an `<a>` tag by default -->
+    <router-link to="/foo">Go to Foo</router-link>
+    <router-link to="/bar">Go to Bar</router-link>
+  </p>
+  <!-- route outlet -->
+  <!-- component matched by the route will render here -->
+  <router-view></router-view>
+</div>
 
-<script>
-var canvas = document.getElementById('beerCanvas');
-var ctx = canvas.getContext('2d');
-var particles = [];
-var particleCount = 280;
 
-for (var i = 0; i < particleCount; i++) {
-  particles.push(new particle());
+
+<style>
+div.foo {
+  background-color: red;
 }
-
-function particle() {
-  this.x = Math.random() * canvas.width;
-  this.y = canvas.height + Math.random() * 300;
-  this.speed = 1 + Math.random();
-  this.radius = Math.random() * 3;
-  this.opacity = (Math.random() * 100) / 1000;
+div.foo {
+  background-color: green;
 }
-
-function loop() {
-  requestAnimationFrame(loop);
-  draw();
+div {
+  height:200px;
+  width:200px;
 }
+</style>
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.globalCompositeOperation = 'lighter';
-  for (var i = 0; i < particles.length; i++) {
-    var p = particles[i];
-    ctx.beginPath();
-    ctx.fillStyle = 'rgba(255,255,255,' + p.opacity + ')';
-    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2, false);
-    ctx.fill();
-    p.y -= p.speed;
-    if (p.y <= -10)
-      particles[i] = new particle();
-  }
-}
-loop();
-</script>
+</body>	
 
-<script>
-$('#parallax').parallax({
-	invertX: true,
-	invertY: true,
-	scalarX: 10,
-	 frictionY: .1
-});
-</script>
-
-</body>
+<script type="text/javascript" src="js/app.js"></script>
 </html>
