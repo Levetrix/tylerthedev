@@ -1,0 +1,119 @@
+@charset "UTF-8";
+/* line 11, ../scss/main.scss */
+.button {
+  height: 85px;
+  width: 200px;
+  background-color: white;
+  border: 5px solid #cb6586;
+  padding-top: 1rem;
+  font-family: "Raleway";
+  font-style: italic;
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* line 24, ../scss/main.scss */
+#main {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../img/bg1.jpg");
+  background-color: #646464;
+  background-blend-mode: luminosity;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Roboto";
+  overflow: hidden;
+}
+
+/* line 36, ../scss/main.scss */
+#preview-box {
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+/* line 48, ../scss/main.scss */
+#preview-box .content {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding-top: 20vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  color: #666;
+}
+/* line 57, ../scss/main.scss */
+#preview-box .content .itemNumber {
+  font-family: "Raleway";
+  font-style: italic;
+  font-weight: 200;
+  font-size: 12rem;
+  color: #cb6586;
+}
+/* line 65, ../scss/main.scss */
+#preview-box .content .itemTitle {
+  font-family: "Raleway";
+  font-size: 6rem;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+/* line 72, ../scss/main.scss */
+#preview-box .content .tags {
+  margin-top: 6.5rem;
+}
+/* line 75, ../scss/main.scss */
+#preview-box .content .tags .tag {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #cb6586;
+}
+/* line 81, ../scss/main.scss */
+#preview-box .content .tags .tag:after, #preview-box .content .tags .tag:before {
+  content: "•";
+  display: inline-block;
+  padding: 0 .25rem;
+}
+/* line 86, ../scss/main.scss */
+#preview-box .content .tags .tag:before {
+  content: " ";
+}
+/* line 90, ../scss/main.scss */
+#preview-box .content .tags .tag:last-of-type:after {
+  display: none;
+}
+/* line 96, ../scss/main.scss */
+#preview-box .content .expandButton {
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 200px/2);
+  border-bottom: 0px;
+}
+/* line 104, ../scss/main.scss */
+#preview-box .next, #preview-box .previous {
+  position: absolute;
+  bottom: 300px;
+}
+/* line 110, ../scss/main.scss */
+#preview-box .next {
+  border-right: 0px;
+  right: calc(-200px/6);
+}
+/* line 115, ../scss/main.scss */
+#preview-box .previous {
+  left: calc(-200px/6);
+  border-left: 0px;
+}
+
+@media screen and (min-width: 480px) {
+  /* line 123, ../scss/main.scss */
+  #preview-box .content {
+    padding-top: 10vh;
+  }
+}

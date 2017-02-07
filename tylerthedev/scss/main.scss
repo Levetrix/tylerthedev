@@ -1,0 +1,128 @@
+@import "compass/css3";
+
+$var : white;
+$pink: rgb(203,101,134);
+$pink-dark: rgb(204, 71, 114);
+$pink-darker: rgb(201, 48, 97);
+
+$buttonWidth: 200px;
+
+
+.button {
+  height:85px;
+  width:$buttonWidth;
+  background-color:white;
+  border: 5px solid $pink;
+  padding-top: 1rem;
+  font-family: "Raleway";
+  font-style: italic;
+  font-size: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#main {
+  height:100vh;
+  width:100vw;
+  background-image: url("../img/bg1.jpg");
+  background-color: rgba(100,100,100,1);
+  background-blend-mode: luminosity;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Roboto";
+  overflow:hidden;
+}
+
+#preview-box {
+  //background-image: url("../img/bg1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: block;
+  position:relative;
+  height:100%;
+  width:100%;
+  left:0;
+  top:0;
+  overflow:hidden;
+
+  & .content {
+    width:100%;
+    height:100%;
+    background-color: rgba(255,255,255,.9);
+    padding-top:20vh;
+    padding-left:10vw;
+    padding-right:10vw;
+    color:#666;
+
+    & .itemNumber {
+      font-family: "Raleway";
+      font-style:italic;
+      font-weight:200;
+      font-size:12rem;
+      color: $pink;
+    }
+
+    & .itemTitle {
+      font-family: "Raleway";
+      font-size:6rem;
+      font-weight: 400;
+      margin-top: 1rem;
+    }
+
+    & .tags {
+      margin-top: 6.5rem;
+
+      & .tag {
+        display:inline-block;
+        font-size: 2.5rem;
+        font-weight:300;
+        color:$pink;
+
+        &:after, &:before {
+          content:"•";
+          display: inline-block;
+          padding:0 .25rem;
+        }
+        &:before {
+          content: " ";
+        }
+
+        &:last-of-type:after {
+          display:none;
+        }
+      }
+    }
+
+    & .expandButton {
+      position:absolute;
+      bottom:0;
+      left:calc(50% - #{$buttonWidth}/2);
+      border-bottom:0px;
+    }
+  }
+
+  & .next, & .previous {
+    position: absolute;
+    bottom: 300px;
+
+  }
+
+  & .next {
+    border-right:0px;
+    right:calc(-#{$buttonWidth}/6);
+  }
+
+  & .previous {
+    left:calc(-#{$buttonWidth}/6);
+    border-left:0px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  #preview-box {
+    & .content {
+      padding-top: 10vh;
+    }
+  }
+
+}
