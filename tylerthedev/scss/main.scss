@@ -5,20 +5,21 @@ $pink: rgb(203,101,134);
 $pink-dark: rgb(204, 71, 114);
 $pink-darker: rgb(201, 48, 97);
 
-$buttonWidth: 200px;
+$buttonWidth: 100px;
 
 
 .button {
-  height:85px;
+  height:42px;
   width:$buttonWidth;
   background-color:white;
-  border: 5px solid $pink;
-  padding-top: 1rem;
+  border: 2px solid $pink;
+  padding-top: .5rem;
   font-family: "Raleway";
   font-style: italic;
-  font-size: 3rem;
+  font-size: 1.5rem;
   text-align: center;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 #main {
@@ -34,7 +35,7 @@ $buttonWidth: 200px;
 }
 
 #preview-box {
-  //background-image: url("../img/bg1.jpg");
+  background-image: url("../img/bg1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   display: block;
@@ -46,10 +47,13 @@ $buttonWidth: 200px;
   overflow:hidden;
 
   & .content {
+    position:relative;
+    top:0;
+    left:0;
     width:100%;
     height:100%;
     background-color: rgba(255,255,255,.9);
-    padding-top:20vh;
+    padding-top:10vh;
     padding-left:10vw;
     padding-right:10vw;
     color:#666;
@@ -58,30 +62,32 @@ $buttonWidth: 200px;
       font-family: "Raleway";
       font-style:italic;
       font-weight:200;
-      font-size:12rem;
+      font-size:6rem;
       color: $pink;
     }
 
     & .itemTitle {
       font-family: "Raleway";
-      font-size:6rem;
+      font-size:2.75rem;
       font-weight: 400;
-      margin-top: 1rem;
+      margin-top: .5rem;
     }
 
     & .tags {
-      margin-top: 6.5rem;
+      margin-top: 3.25rem;
+      font-family: "Raleway";
+      font-style: italic;
+      font-size: 1.125rem;
+      font-weight:300;
+      color:$pink;
 
       & .tag {
         display:inline-block;
-        font-size: 2.5rem;
-        font-weight:300;
-        color:$pink;
 
         &:after, &:before {
           content:"•";
           display: inline-block;
-          padding:0 .25rem;
+          padding:0 .125rem;
         }
         &:before {
           content: " ";
@@ -103,7 +109,7 @@ $buttonWidth: 200px;
 
   & .next, & .previous {
     position: absolute;
-    bottom: 300px;
+    bottom: 100px;
 
   }
 
@@ -118,12 +124,121 @@ $buttonWidth: 200px;
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 480px) {
   #preview-box {
     & .content {
-      background: blue;
       padding-top: 10vh;
     }
   }
 
+}
+
+@media screen and (min-width: 760px) {
+  $boxHeight: 340px;
+  $buttonWidth: 75px;
+  $buttonHeight: 36px;
+  $buttonLowerPosition: 17rem;
+  $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
+
+  .button {
+    height:$buttonHeight;
+    width:$buttonWidth;
+    font-size: 1.2rem;
+  }
+
+  #preview-box {
+    height:$boxHeight;
+    width:80vw;
+    top:calc((100vh - #{$boxHeight})/2);
+    left:10vw;
+
+    & .content {
+      width:50%;
+      padding-left:2rem;
+      padding-right:2rem;
+
+      & .itemNumber {
+        font-size:2.35rem;
+      }
+
+      & .itemTitle {
+        font-size: 1.8rem;
+      }
+
+      & .tags {
+        position:absolute;
+        top: $buttonLowerPosition;
+        font-size:.8rem;
+        margin-top:0;
+      }
+
+      & .expandButton {
+        position:static;
+        margin-top:2rem;
+        border-bottom: 2px solid $pink;
+      }
+    }
+
+    & .next, & .previous {
+      left: calc(50% - #{$buttonWidth}/2);
+      right:initial;
+    }
+
+    & .next {
+      border-right: 2px solid $pink;
+      bottom: initial;
+      top:$buttonPosition;
+    }
+
+    & .previous {
+      border-left: 2px solid $pink;
+      bottom: initial;
+      top:$buttonLowerPosition;
+    }
+  }
+
+}
+
+@media screen and (min-width: 975px) {
+  $boxHeight: 545px;
+  $buttonWidth: 75px;
+  $buttonHeight: 36px;
+  $buttonLowerPosition: 17rem;
+  $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
+  $boxHeight: 340px;
+  $buttonWidth: 75px;
+  $buttonHeight: 36px;
+  $buttonLowerPosition: 17rem;
+  $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
+
+  .button {
+  }
+
+  #preview-box {
+    height:$boxHeight;
+
+    & .content {
+
+      & .itemNumber {
+      }
+
+      & .itemTitle {
+      }
+
+      & .tags {
+      }
+
+      & .expandButton {
+      }
+    }
+
+    & .next, & .previous {
+    }
+
+    & .next {
+    }
+
+    & .previous {
+    }
+  }
 }
