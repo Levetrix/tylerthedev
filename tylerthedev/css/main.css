@@ -111,9 +111,10 @@
   border-left: 0px;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 800px) {
   /* line 123, ../scss/main.scss */
   #preview-box .content {
+    background: blue;
     padding-top: 10vh;
   }
 }
