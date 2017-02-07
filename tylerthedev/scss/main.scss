@@ -20,6 +20,7 @@ $buttonWidth: 100px;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
+  z-index: 50;
 }
 
 #main {
@@ -35,28 +36,51 @@ $buttonWidth: 100px;
 }
 
 #preview-box {
+  display: block;
+  position:relative;
   background-image: url("../img/bg1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  display: block;
-  position:relative;
   height:100%;
   width:100%;
   left:0;
   top:0;
   overflow:hidden;
+  @include single-box-shadow(0px, 1px, 5px, 0px, rgba(100,100,100,.45));
 
-  & .content {
-    position:relative;
+  & .backdrop {
+    background-color: rgba(255,255,255,.9);
+    visibility:visible;
+    z-index: 0;
+    position: absolute;
     top:0;
     left:0;
+    height:100%;
+    width:100%;
+  }
+
+  & .content {
+    position:absolute;
+    top:10px;
     width:100%;
     height:100%;
-    background-color: rgba(255,255,255,.9);
     padding-top:10vh;
     padding-left:10vw;
     padding-right:10vw;
     color:#666;
+    @include opacity(0);
+
+    &.active {
+        @include opacity(1);
+        @include single-transition(.5s,ease);
+        top:0;
+        left:0;
+    }
+
+    &.leaving {
+      @include single-transition(.2s,ease-out);
+      top:-10px;
+    }
 
     & .itemNumber {
       font-family: "Raleway";
@@ -98,13 +122,13 @@ $buttonWidth: 100px;
         }
       }
     }
+  }
 
-    & .expandButton {
-      position:absolute;
-      bottom:0;
-      left:calc(50% - #{$buttonWidth}/2);
-      border-bottom:0px;
-    }
+  & .expandButton {
+    position:absolute;
+    bottom:0;
+    left:calc(50% - #{$buttonWidth}/2);
+    border-bottom:0px;
   }
 
   & .next, & .previous {
@@ -133,17 +157,19 @@ $buttonWidth: 100px;
 
 }
 
+$boxHeight: 340px;
+$buttonWidth: 75px;
+$buttonHeight: 36px;
+$buttonLowerPosition: 17rem;
+$buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
+
 @media screen and (min-width: 760px) {
-  $boxHeight: 340px;
-  $buttonWidth: 75px;
-  $buttonHeight: 36px;
-  $buttonLowerPosition: 17rem;
-  $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
 
   .button {
     height:$buttonHeight;
     width:$buttonWidth;
     font-size: 1.2rem;
+    @include single-box-shadow(-1px, 1px, 5px, 0px, rgba(120,120,120,.5));
   }
 
   #preview-box {
@@ -152,10 +178,21 @@ $buttonWidth: 100px;
     top:calc((100vh - #{$boxHeight})/2);
     left:10vw;
 
+    & .backdrop {
+      background-color:white;
+      background-image: initial;
+      visibility:visible;
+      width:50%;
+      z-index: 5;
+    }
+
     & .content {
+      z-index: 10;
+      background: initial;
       width:50%;
       padding-left:2rem;
       padding-right:2rem;
+      padding-top:4rem;
 
       & .itemNumber {
         font-size:2.35rem;
@@ -171,12 +208,13 @@ $buttonWidth: 100px;
         font-size:.8rem;
         margin-top:0;
       }
+    }
 
-      & .expandButton {
-        position:static;
-        margin-top:2rem;
-        border-bottom: 2px solid $pink;
-      }
+    & .expandButton {
+      position:absolute;;
+      top:$buttonPosition;
+      left:2rem;
+      border-bottom: 2px solid $pink;
     }
 
     & .next, & .previous {
@@ -199,46 +237,59 @@ $buttonWidth: 100px;
 
 }
 
-@media screen and (min-width: 975px) {
-  $boxHeight: 545px;
-  $buttonWidth: 75px;
-  $buttonHeight: 36px;
-  $buttonLowerPosition: 17rem;
-  $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
-  $boxHeight: 340px;
-  $buttonWidth: 75px;
-  $buttonHeight: 36px;
-  $buttonLowerPosition: 17rem;
-  $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
-
+$boxHeight: 385px;
+$buttonWidth: 75px;
+$buttonHeight: 36px;
+$buttonLowerPosition: 19.5rem;
+$buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
+@media screen and (min-width: 965px) and (min-height:550px){
   .button {
   }
 
   #preview-box {
     height:$boxHeight;
+    width:80vw;
+    top:calc((100vh - #{$boxHeight})/2);
+    left:10vw;
 
     & .content {
+      padding-right:3rem;
 
       & .itemNumber {
+        font-size:4rem
       }
 
       & .itemTitle {
+        font-size: 2.35rem;
       }
 
       & .tags {
+        top:$buttonLowerPosition;
+        padding-right:3rem;
       }
+    }
 
-      & .expandButton {
-      }
+    & .expandButton {
+      top:$buttonPosition;
     }
 
     & .next, & .previous {
     }
 
     & .next {
+      top:$buttonPosition;
     }
 
     & .previous {
+      top:$buttonLowerPosition;
     }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  #preview-box {
+    height:415px;
+    width:962.5px;
+    left:calc(50vw - 962.5px / 2);
   }
 }

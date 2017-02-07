@@ -12,9 +12,10 @@
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
+  z-index: 50;
 }
 
-/* line 25, ../scss/main.scss */
+/* line 26, ../scss/main.scss */
 #main {
   height: 100vh;
   width: 100vw;
@@ -27,33 +28,66 @@
   overflow: hidden;
 }
 
-/* line 37, ../scss/main.scss */
+/* line 38, ../scss/main.scss */
 #preview-box {
+  display: block;
+  position: relative;
   background-image: url("../img/bg1.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  display: block;
-  position: relative;
   height: 100%;
   width: 100%;
   left: 0;
   top: 0;
   overflow: hidden;
+  -moz-box-shadow: 0px 1px 5px 0px rgba(100, 100, 100, 0.45);
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(100, 100, 100, 0.45);
+  box-shadow: 0px 1px 5px 0px rgba(100, 100, 100, 0.45);
 }
-/* line 49, ../scss/main.scss */
-#preview-box .content {
-  position: relative;
+/* line 51, ../scss/main.scss */
+#preview-box .backdrop {
+  background-color: rgba(255, 255, 255, 0.9);
+  visibility: visible;
+  z-index: 0;
+  position: absolute;
   top: 0;
   left: 0;
+  height: 100%;
+  width: 100%;
+}
+/* line 62, ../scss/main.scss */
+#preview-box .content {
+  position: absolute;
+  top: 10px;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.9);
   padding-top: 10vh;
   padding-left: 10vw;
   padding-right: 10vw;
   color: #666;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
 }
-/* line 61, ../scss/main.scss */
+/* line 73, ../scss/main.scss */
+#preview-box .content.active {
+  filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+  opacity: 1;
+  -moz-transition: ease 0.5s;
+  -o-transition: ease 0.5s;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
+  top: 0;
+  left: 0;
+}
+/* line 80, ../scss/main.scss */
+#preview-box .content.leaving {
+  -moz-transition: ease-out 0.2s;
+  -o-transition: ease-out 0.2s;
+  -webkit-transition: ease-out 0.2s;
+  transition: ease-out 0.2s;
+  top: -10px;
+}
+/* line 85, ../scss/main.scss */
 #preview-box .content .itemNumber {
   font-family: "Raleway";
   font-style: italic;
@@ -61,14 +95,14 @@
   font-size: 6rem;
   color: #cb6586;
 }
-/* line 69, ../scss/main.scss */
+/* line 93, ../scss/main.scss */
 #preview-box .content .itemTitle {
   font-family: "Raleway";
   font-size: 2.75rem;
   font-weight: 400;
   margin-top: .5rem;
 }
-/* line 76, ../scss/main.scss */
+/* line 100, ../scss/main.scss */
 #preview-box .content .tags {
   margin-top: 3.25rem;
   font-family: "Raleway";
@@ -77,116 +111,171 @@
   font-weight: 300;
   color: #cb6586;
 }
-/* line 84, ../scss/main.scss */
+/* line 108, ../scss/main.scss */
 #preview-box .content .tags .tag {
   display: inline-block;
 }
-/* line 87, ../scss/main.scss */
+/* line 111, ../scss/main.scss */
 #preview-box .content .tags .tag:after, #preview-box .content .tags .tag:before {
   content: "•";
   display: inline-block;
   padding: 0 .125rem;
 }
-/* line 92, ../scss/main.scss */
+/* line 116, ../scss/main.scss */
 #preview-box .content .tags .tag:before {
   content: " ";
 }
-/* line 96, ../scss/main.scss */
+/* line 120, ../scss/main.scss */
 #preview-box .content .tags .tag:last-of-type:after {
   display: none;
 }
-/* line 102, ../scss/main.scss */
-#preview-box .content .expandButton {
+/* line 127, ../scss/main.scss */
+#preview-box .expandButton {
   position: absolute;
   bottom: 0;
   left: calc(50% - 100px/2);
   border-bottom: 0px;
 }
-/* line 110, ../scss/main.scss */
+/* line 134, ../scss/main.scss */
 #preview-box .next, #preview-box .previous {
   position: absolute;
   bottom: 100px;
 }
-/* line 116, ../scss/main.scss */
+/* line 140, ../scss/main.scss */
 #preview-box .next {
   border-right: 0px;
   right: calc(-100px/6);
 }
-/* line 121, ../scss/main.scss */
+/* line 145, ../scss/main.scss */
 #preview-box .previous {
   left: calc(-100px/6);
   border-left: 0px;
 }
 
 @media screen and (min-width: 480px) {
-  /* line 129, ../scss/main.scss */
+  /* line 153, ../scss/main.scss */
   #preview-box .content {
     padding-top: 10vh;
   }
 }
 @media screen and (min-width: 760px) {
-  /* line 143, ../scss/main.scss */
+  /* line 168, ../scss/main.scss */
   .button {
     height: 36px;
     width: 75px;
     font-size: 1.2rem;
+    -moz-box-shadow: -1px 1px 5px 0px rgba(120, 120, 120, 0.5);
+    -webkit-box-shadow: -1px 1px 5px 0px rgba(120, 120, 120, 0.5);
+    box-shadow: -1px 1px 5px 0px rgba(120, 120, 120, 0.5);
   }
 
-  /* line 149, ../scss/main.scss */
+  /* line 175, ../scss/main.scss */
   #preview-box {
     height: 340px;
     width: 80vw;
     top: calc((100vh - 340px)/2);
     left: 10vw;
   }
-  /* line 155, ../scss/main.scss */
+  /* line 181, ../scss/main.scss */
+  #preview-box .backdrop {
+    background-color: white;
+    background-image: initial;
+    visibility: visible;
+    width: 50%;
+    z-index: 5;
+  }
+  /* line 189, ../scss/main.scss */
   #preview-box .content {
+    z-index: 10;
+    background: initial;
     width: 50%;
     padding-left: 2rem;
     padding-right: 2rem;
+    padding-top: 4rem;
   }
-  /* line 160, ../scss/main.scss */
+  /* line 197, ../scss/main.scss */
   #preview-box .content .itemNumber {
     font-size: 2.35rem;
   }
-  /* line 164, ../scss/main.scss */
+  /* line 201, ../scss/main.scss */
   #preview-box .content .itemTitle {
     font-size: 1.8rem;
   }
-  /* line 168, ../scss/main.scss */
+  /* line 205, ../scss/main.scss */
   #preview-box .content .tags {
     position: absolute;
     top: 17rem;
     font-size: .8rem;
     margin-top: 0;
   }
-  /* line 175, ../scss/main.scss */
-  #preview-box .content .expandButton {
-    position: static;
-    margin-top: 2rem;
+  /* line 213, ../scss/main.scss */
+  #preview-box .expandButton {
+    position: absolute;
+    top: calc(17rem - 36px * 1.75);
+    left: 2rem;
     border-bottom: 2px solid #cb6586;
   }
-  /* line 182, ../scss/main.scss */
+  /* line 220, ../scss/main.scss */
   #preview-box .next, #preview-box .previous {
     left: calc(50% - 75px/2);
     right: initial;
   }
-  /* line 187, ../scss/main.scss */
+  /* line 225, ../scss/main.scss */
   #preview-box .next {
     border-right: 2px solid #cb6586;
     bottom: initial;
     top: calc(17rem - 36px * 1.75);
   }
-  /* line 193, ../scss/main.scss */
+  /* line 231, ../scss/main.scss */
   #preview-box .previous {
     border-left: 2px solid #cb6586;
     bottom: initial;
     top: 17rem;
   }
 }
-@media screen and (min-width: 975px) {
-  /* line 217, ../scss/main.scss */
+@media screen and (min-width: 965px) and (min-height: 550px) {
+  /* line 249, ../scss/main.scss */
   #preview-box {
-    height: 340px;
+    height: 385px;
+    width: 80vw;
+    top: calc((100vh - 385px)/2);
+    left: 10vw;
+  }
+  /* line 255, ../scss/main.scss */
+  #preview-box .content {
+    padding-right: 3rem;
+  }
+  /* line 258, ../scss/main.scss */
+  #preview-box .content .itemNumber {
+    font-size: 4rem;
+  }
+  /* line 262, ../scss/main.scss */
+  #preview-box .content .itemTitle {
+    font-size: 2.35rem;
+  }
+  /* line 266, ../scss/main.scss */
+  #preview-box .content .tags {
+    top: 19.5rem;
+    padding-right: 3rem;
+  }
+  /* line 272, ../scss/main.scss */
+  #preview-box .expandButton {
+    top: calc(19.5rem - 36px * 1.75);
+  }
+  /* line 279, ../scss/main.scss */
+  #preview-box .next {
+    top: calc(19.5rem - 36px * 1.75);
+  }
+  /* line 283, ../scss/main.scss */
+  #preview-box .previous {
+    top: 19.5rem;
+  }
+}
+@media screen and (min-width: 1280px) {
+  /* line 290, ../scss/main.scss */
+  #preview-box {
+    height: 415px;
+    width: 962.5px;
+    left: calc(50vw - 962.5px / 2);
   }
 }
