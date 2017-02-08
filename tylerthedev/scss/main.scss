@@ -1,5 +1,38 @@
 @import "compass/css3";
 
+/*@mixin transition($transitions...) {
+  $unfoldedTransitions: ();
+  @each $transition in $transitions {
+    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
+  }
+
+  -webkit-transition: $unfoldedTransitions;
+  transition: $unfoldedTransitions;
+}
+
+@function unfoldTransition ($transition) {
+  // Default values
+  $property: all;
+  $duration: .2s;
+  $easing: null; // Browser default is ease, which is what we want
+  $delay: null; // Browser default is 0, which is what we want
+  $defaultProperties: ($property, $duration, $easing, $delay);
+
+  // Grab transition properties if they exist
+  $unfoldedTransition: ();
+  @for $i from 1 through length($defaultProperties) {
+    $p: null;
+    @if $i <= length($transition) {
+      $p: nth($transition, $i)
+    } @else {
+      $p: nth($defaultProperties, $i)
+    }
+    $unfoldedTransition: append($unfoldedTransition, $p);
+  }
+
+  @return $unfoldedTransition;
+}*/
+
 $var : white;
 $pink: rgb(203,101,134);
 $pink-dark: rgb(204, 71, 114);
@@ -20,7 +53,7 @@ $buttonWidth: 100px;
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-  z-index: 50;
+  z-index: 15;
 }
 
 #main {
@@ -219,6 +252,118 @@ $buttonWidth: 100px;
   & .previous {
     left:calc(-#{$buttonWidth}/6);
     border-left:0px;
+  }
+}
+
+.expand-content {
+  position:absolute;
+  z-index: 20;
+  background:white;
+  height:100%;
+  width:100vw;
+  top:0;
+  left:-100vw;
+  @include opacity(0);
+  @include transition(opacity .25s ease-out);
+
+  &.open {
+    @include opacity(1);
+    left:0;
+    display:initial;
+
+    & .returnContainer{
+      left:0;
+
+      & .closeProject{
+        right:0;
+      }
+    }
+  }
+
+  &.leaving {
+    @include opacity(0);
+    @include transition(opacity .5s ease .5s);
+  }
+
+  & .returnContainer {
+    position:fixed;
+    top:0;
+    left:-100vw;
+    width:100vw;
+    height:4rem;
+    background-color:rgba(255,255,255,.5);
+    z-index: 25;
+
+    & .closeProject {
+      position:fixed;
+      top:0;
+      right:-100vw;
+      height:4rem;
+      width:4rem;
+      background-color:#999;
+      cursor: pointer;
+      z-index: 26;
+    }
+  }
+
+  & .project {
+    position:absolute;
+    background:white;
+    width:100vw;
+    top:15px;
+    left:-100vw;
+    font-family: "Raleway";
+    padding:0 10vw;
+    padding-top: 6rem;
+    //display:none;
+    @include opacity(0);
+    @include transition(opacity .5s ease-out .5s, top .5s ease-out .5s);
+
+    &.open {
+      @include opacity(1);
+      left:0;
+      top:0;
+      display:initial;
+    }
+
+    &.leaving {
+      @include opacity(0);
+      @include transition(opacity .5s ease-out, top .5s ease-out);
+      top:15px;
+
+    }
+
+    & .itemTitle {
+      font-size:2.85rem;
+      color:#666;
+      margin-bottom:2.5rem;
+    }
+
+    & .information {
+
+      & section {
+        margin-bottom:2.5rem;
+
+        & h4 {
+          font-size:1.35rem;
+          font-family: "Roboto";
+          font-weight: 300;
+          color:$pink;
+          margin-bottom:.5rem;
+
+        }
+
+        & p {
+          font-size: .85rem;
+          color:#666;
+          line-height: 1.35em;
+        }
+
+        & img {
+          max-width:calc(100vw - 20vw);
+        }
+      }
+    }
   }
 }
 
