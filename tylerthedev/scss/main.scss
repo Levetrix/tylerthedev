@@ -26,27 +26,101 @@ $buttonWidth: 100px;
 #main {
   height:100vh;
   width:100vw;
-  background-image: url("../img/bg1.jpg");
-  background-color: rgba(100,100,100,1);
-  background-blend-mode: luminosity;
-  background-size: cover;
-  background-repeat: no-repeat;
   font-family: "Roboto";
   overflow:hidden;
+
+  & > .backgrounds {
+    position: absolute;
+    height:100%;
+    width:100%;
+
+    & .background {
+      position: absolute;
+      @include opacity(0);
+      height:100%;
+      width:100%;
+      background-color: rgba(160,160,160,1);
+      background-blend-mode: overlay;
+      @include filter(blur(3px));
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      &.bg1 {
+        background-image: url("../img/bg1.jpg");
+      }
+
+      &.bg2 {
+        background-image: url("../img/bg2.jpg");
+      }
+
+      &.bg3 {
+        background-image: url("../img/bg3.jpg");
+      }
+
+      &.active {
+        @include opacity(1);
+        @include single-transition(.2s,ease);
+      }
+
+      &.leaving {
+        @include single-transition(.1s,ease);
+        @include opacity(0);
+      }
+    }
+  }
 }
 
 #preview-box {
   display: block;
   position:relative;
-  background-image: url("../img/bg1.jpg");
+  /*background-image: url("../img/bg1.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat;*/
   height:100%;
   width:100%;
   left:0;
   top:0;
   overflow:hidden;
   @include single-box-shadow(0px, 1px, 5px, 0px, rgba(100,100,100,.45));
+
+  & .backgrounds {
+    position: absolute;
+    height:100%;
+    width:100%;
+
+    & .background {
+      position: absolute;
+      @include opacity(0);
+      height:100%;
+      width:100%;
+      background-color: rgba(10,10,10,1);
+      //background-blend-mode: luminosity;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      &.bg1 {
+        background-image: url("../img/bg1.jpg");
+      }
+
+      &.bg2 {
+        background-image: url("../img/bg2.jpg");
+      }
+
+      &.bg3 {
+        background-image: url("../img/bg3.jpg");
+      }
+
+      &.active {
+        @include opacity(1);
+        @include single-transition(.1s,ease);
+      }
+
+      &.leaving {
+        @include single-transition(.1s,ease);
+        @include opacity(0);
+      }
+    }
+  }
 
   & .backdrop {
     background-color: rgba(255,255,255,.9);

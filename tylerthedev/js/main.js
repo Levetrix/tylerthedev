@@ -6,9 +6,13 @@ $(document).ready(function() {
   bindNextPrev();
   numProjects = $("#preview-box .content").length;
   projCount = 1;
-  //console.log("total num projects: " + numProjects);
 
 });
+
+function bindActiveClass(){
+  $("#preview-box .content:nth-of-type(" + projCount + ")").addClass("active");
+  $(".background:nth-of-type(" + projCount + ")").addClass("active");
+}
 
 function postAnimation(){
   bindNextPrev();
@@ -35,7 +39,7 @@ function next(){
     projCount++;
   }
 
-  $("#preview-box .content:nth-of-type(" + projCount + ")").addClass("active");
+  bindActiveClass();
 
   unbindNextPrev();
 
@@ -51,7 +55,7 @@ function previous(){
     projCount--;
   }
 
-  $("#preview-box .content:nth-of-type(" + projCount + ")").addClass("active");
+  bindActiveClass();
 
   unbindNextPrev();
 
