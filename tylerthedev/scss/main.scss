@@ -1,7 +1,7 @@
 @import "compass/css3";
 
 $var : white;
-$pink: rgb(203,101,134);
+$pink: rgb(178, 17, 39);
 $pink-dark: rgb(204, 71, 114);
 $pink-darker: rgb(201, 48, 97);
 
@@ -22,6 +22,29 @@ $buttonWidth: 100px;
   cursor: pointer;
   z-index: 15;
 }
+
+.closer {
+  @include opacity(.3);
+}
+.closeProject:hover .closer {
+  @include opacity(.6);
+}
+.closer:before, .closer:after {
+  position: absolute;
+  right: 23px;
+  top:-8px;
+  content: ' ';
+  height: 100%;
+  width: 2px;
+  background-color: #333;
+}
+.closer:before {
+  transform: rotate(45deg);
+}
+.closer:after {
+  transform: rotate(-45deg);
+}
+
 
 #main {
   height:100vh;
@@ -208,25 +231,25 @@ $buttonWidth: 100px;
 
   & .expandButton {
     position:absolute;
-    bottom:0;
-    left:calc(50% - #{$buttonWidth}/2);
-    border-bottom:0px;
+    bottom:6rem;
+    left:10vw;//calc(50% - #{$buttonWidth}/2);
+    //border-bottom:0px;
   }
 
   & .next, & .previous {
     position: absolute;
-    bottom: 100px;
+    bottom: 0px;
 
   }
 
   & .next {
-    border-right:0px;
-    right:calc(-#{$buttonWidth}/6);
+    //border-right:0px;
+    right:10vw;//calc(-#{$buttonWidth}/6);
   }
 
   & .previous {
-    left:calc(-#{$buttonWidth}/6);
-    border-left:0px;
+    left:10vw;//calc(-#{$buttonWidth}/6);
+    //border-left:0px;
   }
 }
 
@@ -251,6 +274,12 @@ $buttonWidth: 100px;
 
       & .closeProject{
         right:0;
+        margin-right:10vw;
+        margin-top:2rem;
+
+        &:hover {
+          cursor:pointer;
+        }
       }
     }
   }
@@ -265,7 +294,7 @@ $buttonWidth: 100px;
     top:0;
     left:-100vw;
     width:100vw;
-    height:4rem;
+    height:6rem;
     background-color:rgba(255,255,255,.5);
     z-index: 25;
 
@@ -275,7 +304,7 @@ $buttonWidth: 100px;
       right:-100vw;
       height:4rem;
       width:4rem;
-      background-color:#999;
+      //background-color:#999;
       cursor: pointer;
       z-index: 26;
     }
@@ -290,7 +319,6 @@ $buttonWidth: 100px;
     font-family: "Raleway";
     padding:0 10vw;
     padding-top: 6rem;
-    //display:none;
     @include opacity(0);
     @include transition(opacity .5s ease-out .5s, top .5s ease-out .5s);
 
@@ -343,6 +371,7 @@ $buttonWidth: 100px;
         & img {
           max-width:calc(100vw - 20vw);
           display:inline-block;
+          @include single-box-shadow(0px, 1px, 5px, 0px, rgba(100,100,100,.45));
         }
       }
     }
@@ -371,6 +400,17 @@ $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
     width:$buttonWidth;
     font-size: 1.2rem;
     @include single-box-shadow(-1px, 1px, 5px, 0px, rgba(120,120,120,.5));
+  }
+
+  .expand-content {
+
+    & .returnContainer{
+
+      & .closeProject {
+          margin-right: calc(10vw);
+          margin-top:4rem;
+      }
+    }
   }
 
   #preview-box {
@@ -408,6 +448,7 @@ $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
         top: $buttonLowerPosition;
         font-size:.8rem;
         margin-top:0;
+        padding-right:2rem;
       }
     }
 
@@ -435,7 +476,6 @@ $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
       top:$buttonLowerPosition;
     }
   }
-
 }
 
 $boxHeight: 385px;
@@ -495,6 +535,12 @@ $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
   }
   .expand-content {
 
+    & .returnContainer{
+
+      & .closeProject {
+          //padding-right: calc(50vw - 500px);
+      }
+    }
 
     & .project {
       padding-left: calc(50vw - 500px);
