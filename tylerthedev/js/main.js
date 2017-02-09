@@ -47,6 +47,8 @@ function openView(){
   $(".expand-content").addClass("open");
   $(".project:nth-of-type(" + projCount + ")").addClass("open");
 
+  $(".project:not(:nth-of-type(" + projCount + "))").addClass("gone");
+
   unbindOpenView();
   unbindNextPrev();
 
@@ -58,6 +60,8 @@ function closeView(){
 
   $(".expand-content").addClass("leaving");
   $(".project:nth-of-type(" + projCount + ")").addClass("leaving");
+
+  $(".project:not(:nth-of-type(" + projCount + "))").removeClass("gone");
 
   setTimeout(function(){
     $(".leaving").removeClass("open").removeClass("leaving");

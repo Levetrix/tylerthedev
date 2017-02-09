@@ -1,37 +1,5 @@
 @charset "UTF-8";
-/*@mixin transition($transitions...) {
-  $unfoldedTransitions: ();
-  @each $transition in $transitions {
-    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
-  }
-
-  -webkit-transition: $unfoldedTransitions;
-  transition: $unfoldedTransitions;
-}
-
-@function unfoldTransition ($transition) {
-  // Default values
-  $property: all;
-  $duration: .2s;
-  $easing: null; // Browser default is ease, which is what we want
-  $delay: null; // Browser default is 0, which is what we want
-  $defaultProperties: ($property, $duration, $easing, $delay);
-
-  // Grab transition properties if they exist
-  $unfoldedTransition: ();
-  @for $i from 1 through length($defaultProperties) {
-    $p: null;
-    @if $i <= length($transition) {
-      $p: nth($transition, $i)
-    } @else {
-      $p: nth($defaultProperties, $i)
-    }
-    $unfoldedTransition: append($unfoldedTransition, $p);
-  }
-
-  @return $unfoldedTransition;
-}*/
-/* line 44, ../scss/main.scss */
+/* line 11, ../scss/main.scss */
 .button {
   height: 42px;
   width: 100px;
@@ -47,20 +15,20 @@
   z-index: 15;
 }
 
-/* line 59, ../scss/main.scss */
+/* line 26, ../scss/main.scss */
 #main {
   height: 100vh;
   width: 100vw;
   font-family: "Roboto";
   overflow: hidden;
 }
-/* line 65, ../scss/main.scss */
+/* line 32, ../scss/main.scss */
 #main > .backgrounds {
   position: absolute;
   height: 100%;
   width: 100%;
 }
-/* line 70, ../scss/main.scss */
+/* line 37, ../scss/main.scss */
 #main > .backgrounds .background {
   position: absolute;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -74,19 +42,23 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-/* line 81, ../scss/main.scss */
+/* line 48, ../scss/main.scss */
 #main > .backgrounds .background.bg1 {
-  background-image: url("../img/bg1.jpg");
+  background-image: url("../img/resized/MJPB.jpg");
 }
-/* line 85, ../scss/main.scss */
+/* line 52, ../scss/main.scss */
 #main > .backgrounds .background.bg2 {
-  background-image: url("../img/bg2.jpg");
+  background-image: url("../img/resized/WB.jpg");
 }
-/* line 89, ../scss/main.scss */
+/* line 56, ../scss/main.scss */
 #main > .backgrounds .background.bg3 {
-  background-image: url("../img/bg3.jpg");
+  background-image: url("../img/resized/DB.jpg");
 }
-/* line 93, ../scss/main.scss */
+/* line 60, ../scss/main.scss */
+#main > .backgrounds .background.bg4 {
+  background-image: url("../img/resized/HSPB.jpg");
+}
+/* line 64, ../scss/main.scss */
 #main > .backgrounds .background.active {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -95,7 +67,7 @@
   -webkit-transition: ease 0.2s;
   transition: ease 0.2s;
 }
-/* line 98, ../scss/main.scss */
+/* line 69, ../scss/main.scss */
 #main > .backgrounds .background.leaving {
   -moz-transition: ease 0.1s;
   -o-transition: ease 0.1s;
@@ -105,7 +77,7 @@
   opacity: 0;
 }
 
-/* line 106, ../scss/main.scss */
+/* line 77, ../scss/main.scss */
 #preview-box {
   display: block;
   position: relative;
@@ -121,13 +93,13 @@
   -webkit-box-shadow: 0px 1px 5px 0px rgba(100, 100, 100, 0.45);
   box-shadow: 0px 1px 5px 0px rgba(100, 100, 100, 0.45);
 }
-/* line 119, ../scss/main.scss */
+/* line 90, ../scss/main.scss */
 #preview-box .backgrounds {
   position: absolute;
   height: 100%;
   width: 100%;
 }
-/* line 124, ../scss/main.scss */
+/* line 95, ../scss/main.scss */
 #preview-box .backgrounds .background {
   position: absolute;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
@@ -138,19 +110,23 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-/* line 134, ../scss/main.scss */
+/* line 105, ../scss/main.scss */
 #preview-box .backgrounds .background.bg1 {
-  background-image: url("../img/bg1.jpg");
+  background-image: url("../img/resized/MJPB.jpg");
 }
-/* line 138, ../scss/main.scss */
+/* line 109, ../scss/main.scss */
 #preview-box .backgrounds .background.bg2 {
-  background-image: url("../img/bg2.jpg");
+  background-image: url("../img/resized/WB.jpg");
 }
-/* line 142, ../scss/main.scss */
+/* line 113, ../scss/main.scss */
 #preview-box .backgrounds .background.bg3 {
-  background-image: url("../img/bg3.jpg");
+  background-image: url("../img/resized/DB.jpg");
 }
-/* line 146, ../scss/main.scss */
+/* line 117, ../scss/main.scss */
+#preview-box .backgrounds .background.bg4 {
+  background-image: url("../img/resized/HSPB.jpg");
+}
+/* line 121, ../scss/main.scss */
 #preview-box .backgrounds .background.active {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -159,7 +135,7 @@
   -webkit-transition: ease 0.1s;
   transition: ease 0.1s;
 }
-/* line 151, ../scss/main.scss */
+/* line 126, ../scss/main.scss */
 #preview-box .backgrounds .background.leaving {
   -moz-transition: ease 0.1s;
   -o-transition: ease 0.1s;
@@ -168,7 +144,7 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 158, ../scss/main.scss */
+/* line 133, ../scss/main.scss */
 #preview-box .backdrop {
   background-color: rgba(255, 255, 255, 0.9);
   visibility: visible;
@@ -179,7 +155,7 @@
   height: 100%;
   width: 100%;
 }
-/* line 169, ../scss/main.scss */
+/* line 144, ../scss/main.scss */
 #preview-box .content {
   position: absolute;
   top: 10px;
@@ -192,7 +168,7 @@
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
-/* line 180, ../scss/main.scss */
+/* line 155, ../scss/main.scss */
 #preview-box .content.active {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -203,7 +179,7 @@
   top: 0;
   left: 0;
 }
-/* line 187, ../scss/main.scss */
+/* line 162, ../scss/main.scss */
 #preview-box .content.leaving {
   -moz-transition: ease-out 0.2s;
   -o-transition: ease-out 0.2s;
@@ -211,7 +187,7 @@
   transition: ease-out 0.2s;
   top: -10px;
 }
-/* line 192, ../scss/main.scss */
+/* line 167, ../scss/main.scss */
 #preview-box .content .itemNumber {
   font-family: "Raleway";
   font-style: italic;
@@ -219,14 +195,14 @@
   font-size: 6rem;
   color: #cb6586;
 }
-/* line 200, ../scss/main.scss */
+/* line 175, ../scss/main.scss */
 #preview-box .content .itemTitle {
   font-family: "Raleway";
   font-size: 2.75rem;
   font-weight: 400;
   margin-top: .5rem;
 }
-/* line 207, ../scss/main.scss */
+/* line 182, ../scss/main.scss */
 #preview-box .content .tags {
   margin-top: 3.25rem;
   font-family: "Raleway";
@@ -235,48 +211,48 @@
   font-weight: 300;
   color: #cb6586;
 }
-/* line 215, ../scss/main.scss */
+/* line 190, ../scss/main.scss */
 #preview-box .content .tags .tag {
   display: inline-block;
 }
-/* line 218, ../scss/main.scss */
+/* line 193, ../scss/main.scss */
 #preview-box .content .tags .tag:after, #preview-box .content .tags .tag:before {
   content: "•";
   display: inline-block;
   padding: 0 .125rem;
 }
-/* line 223, ../scss/main.scss */
+/* line 198, ../scss/main.scss */
 #preview-box .content .tags .tag:before {
   content: " ";
 }
-/* line 227, ../scss/main.scss */
+/* line 202, ../scss/main.scss */
 #preview-box .content .tags .tag:last-of-type:after {
   display: none;
 }
-/* line 234, ../scss/main.scss */
+/* line 209, ../scss/main.scss */
 #preview-box .expandButton {
   position: absolute;
   bottom: 0;
   left: calc(50% - 100px/2);
   border-bottom: 0px;
 }
-/* line 241, ../scss/main.scss */
+/* line 216, ../scss/main.scss */
 #preview-box .next, #preview-box .previous {
   position: absolute;
   bottom: 100px;
 }
-/* line 247, ../scss/main.scss */
+/* line 222, ../scss/main.scss */
 #preview-box .next {
   border-right: 0px;
   right: calc(-100px/6);
 }
-/* line 252, ../scss/main.scss */
+/* line 227, ../scss/main.scss */
 #preview-box .previous {
   left: calc(-100px/6);
   border-left: 0px;
 }
 
-/* line 258, ../scss/main.scss */
+/* line 233, ../scss/main.scss */
 .expand-content {
   position: absolute;
   z-index: 20;
@@ -292,22 +268,22 @@
   -webkit-transition: opacity 0.25s ease-out;
   transition: opacity 0.25s ease-out;
 }
-/* line 269, ../scss/main.scss */
+/* line 244, ../scss/main.scss */
 .expand-content.open {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
   left: 0;
   display: initial;
 }
-/* line 274, ../scss/main.scss */
+/* line 249, ../scss/main.scss */
 .expand-content.open .returnContainer {
   left: 0;
 }
-/* line 277, ../scss/main.scss */
+/* line 252, ../scss/main.scss */
 .expand-content.open .returnContainer .closeProject {
   right: 0;
 }
-/* line 283, ../scss/main.scss */
+/* line 258, ../scss/main.scss */
 .expand-content.leaving {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -317,7 +293,7 @@
   -webkit-transition-delay: 0.5s;
   transition: opacity 0.5s ease 0.5s;
 }
-/* line 288, ../scss/main.scss */
+/* line 263, ../scss/main.scss */
 .expand-content .returnContainer {
   position: fixed;
   top: 0;
@@ -327,7 +303,7 @@
   background-color: rgba(255, 255, 255, 0.5);
   z-index: 25;
 }
-/* line 297, ../scss/main.scss */
+/* line 272, ../scss/main.scss */
 .expand-content .returnContainer .closeProject {
   position: fixed;
   top: 0;
@@ -338,7 +314,7 @@
   cursor: pointer;
   z-index: 26;
 }
-/* line 309, ../scss/main.scss */
+/* line 284, ../scss/main.scss */
 .expand-content .project {
   position: absolute;
   background: white;
@@ -356,7 +332,11 @@
   -webkit-transition-delay: 0.5s, 0.5s;
   transition: opacity 0.5s ease-out 0.5s, top 0.5s ease-out 0.5s;
 }
-/* line 322, ../scss/main.scss */
+/* line 297, ../scss/main.scss */
+.expand-content .project.gone {
+  display: none;
+}
+/* line 301, ../scss/main.scss */
 .expand-content .project.open {
   filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
   opacity: 1;
@@ -364,7 +344,7 @@
   top: 0;
   display: initial;
 }
-/* line 329, ../scss/main.scss */
+/* line 308, ../scss/main.scss */
 .expand-content .project.leaving {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
@@ -374,43 +354,47 @@
   transition: opacity 0.5s ease-out, top 0.5s ease-out;
   top: 15px;
 }
-/* line 336, ../scss/main.scss */
+/* line 315, ../scss/main.scss */
 .expand-content .project .itemTitle {
   font-size: 2.85rem;
   color: #666;
   margin-bottom: 2.5rem;
 }
-/* line 344, ../scss/main.scss */
+/* line 323, ../scss/main.scss */
 .expand-content .project .information section {
   margin-bottom: 2.5rem;
+  text-align: center;
 }
-/* line 347, ../scss/main.scss */
+/* line 327, ../scss/main.scss */
 .expand-content .project .information section h4 {
   font-size: 1.35rem;
   font-family: "Roboto";
   font-weight: 300;
   color: #cb6586;
   margin-bottom: .5rem;
+  text-align: left;
 }
-/* line 356, ../scss/main.scss */
+/* line 336, ../scss/main.scss */
 .expand-content .project .information section p {
   font-size: .85rem;
   color: #666;
   line-height: 1.35em;
+  text-align: left;
 }
-/* line 362, ../scss/main.scss */
+/* line 343, ../scss/main.scss */
 .expand-content .project .information section img {
   max-width: calc(100vw - 20vw);
+  display: inline-block;
 }
 
 @media screen and (min-width: 480px) {
-  /* line 372, ../scss/main.scss */
+  /* line 354, ../scss/main.scss */
   #preview-box .content {
     padding-top: 10vh;
   }
 }
 @media screen and (min-width: 760px) {
-  /* line 387, ../scss/main.scss */
+  /* line 369, ../scss/main.scss */
   .button {
     height: 36px;
     width: 75px;
@@ -420,14 +404,14 @@
     box-shadow: -1px 1px 5px 0px rgba(120, 120, 120, 0.5);
   }
 
-  /* line 394, ../scss/main.scss */
+  /* line 376, ../scss/main.scss */
   #preview-box {
     height: 340px;
     width: 80vw;
     top: calc((100vh - 340px)/2);
     left: 10vw;
   }
-  /* line 400, ../scss/main.scss */
+  /* line 382, ../scss/main.scss */
   #preview-box .backdrop {
     background-color: white;
     background-image: initial;
@@ -435,7 +419,7 @@
     width: 50%;
     z-index: 5;
   }
-  /* line 408, ../scss/main.scss */
+  /* line 390, ../scss/main.scss */
   #preview-box .content {
     z-index: 10;
     background: initial;
@@ -444,40 +428,40 @@
     padding-right: 2rem;
     padding-top: 4rem;
   }
-  /* line 416, ../scss/main.scss */
+  /* line 398, ../scss/main.scss */
   #preview-box .content .itemNumber {
     font-size: 2.35rem;
   }
-  /* line 420, ../scss/main.scss */
+  /* line 402, ../scss/main.scss */
   #preview-box .content .itemTitle {
     font-size: 1.8rem;
   }
-  /* line 424, ../scss/main.scss */
+  /* line 406, ../scss/main.scss */
   #preview-box .content .tags {
     position: absolute;
     top: 17rem;
     font-size: .8rem;
     margin-top: 0;
   }
-  /* line 432, ../scss/main.scss */
+  /* line 414, ../scss/main.scss */
   #preview-box .expandButton {
     position: absolute;
     top: calc(17rem - 36px * 1.75);
     left: 2rem;
     border-bottom: 2px solid #cb6586;
   }
-  /* line 439, ../scss/main.scss */
+  /* line 421, ../scss/main.scss */
   #preview-box .next, #preview-box .previous {
     left: calc(50% - 75px/2);
     right: initial;
   }
-  /* line 444, ../scss/main.scss */
+  /* line 426, ../scss/main.scss */
   #preview-box .next {
     border-right: 2px solid #cb6586;
     bottom: initial;
     top: calc(17rem - 36px * 1.75);
   }
-  /* line 450, ../scss/main.scss */
+  /* line 432, ../scss/main.scss */
   #preview-box .previous {
     border-left: 2px solid #cb6586;
     bottom: initial;
@@ -485,48 +469,54 @@
   }
 }
 @media screen and (min-width: 965px) and (min-height: 550px) {
-  /* line 468, ../scss/main.scss */
+  /* line 450, ../scss/main.scss */
   #preview-box {
     height: 385px;
     width: 80vw;
     top: calc((100vh - 385px)/2);
     left: 10vw;
   }
-  /* line 474, ../scss/main.scss */
+  /* line 456, ../scss/main.scss */
   #preview-box .content {
     padding-right: 3rem;
   }
-  /* line 477, ../scss/main.scss */
+  /* line 459, ../scss/main.scss */
   #preview-box .content .itemNumber {
     font-size: 4rem;
   }
-  /* line 481, ../scss/main.scss */
+  /* line 463, ../scss/main.scss */
   #preview-box .content .itemTitle {
     font-size: 2.35rem;
   }
-  /* line 485, ../scss/main.scss */
+  /* line 467, ../scss/main.scss */
   #preview-box .content .tags {
     top: 19.5rem;
     padding-right: 3rem;
   }
-  /* line 491, ../scss/main.scss */
+  /* line 473, ../scss/main.scss */
   #preview-box .expandButton {
     top: calc(19.5rem - 36px * 1.75);
   }
-  /* line 498, ../scss/main.scss */
+  /* line 480, ../scss/main.scss */
   #preview-box .next {
     top: calc(19.5rem - 36px * 1.75);
   }
-  /* line 502, ../scss/main.scss */
+  /* line 484, ../scss/main.scss */
   #preview-box .previous {
     top: 19.5rem;
   }
 }
-@media screen and (min-width: 1280px) {
-  /* line 509, ../scss/main.scss */
+@media screen and (min-width: 1250px) {
+  /* line 491, ../scss/main.scss */
   #preview-box {
     height: 415px;
     width: 962.5px;
     left: calc(50vw - 962.5px / 2);
+  }
+
+  /* line 499, ../scss/main.scss */
+  .expand-content .project {
+    padding-left: calc(50vw - 500px);
+    padding-right: calc(50vw - 500px);
   }
 }

@@ -1,38 +1,5 @@
 @import "compass/css3";
 
-/*@mixin transition($transitions...) {
-  $unfoldedTransitions: ();
-  @each $transition in $transitions {
-    $unfoldedTransitions: append($unfoldedTransitions, unfoldTransition($transition), comma);
-  }
-
-  -webkit-transition: $unfoldedTransitions;
-  transition: $unfoldedTransitions;
-}
-
-@function unfoldTransition ($transition) {
-  // Default values
-  $property: all;
-  $duration: .2s;
-  $easing: null; // Browser default is ease, which is what we want
-  $delay: null; // Browser default is 0, which is what we want
-  $defaultProperties: ($property, $duration, $easing, $delay);
-
-  // Grab transition properties if they exist
-  $unfoldedTransition: ();
-  @for $i from 1 through length($defaultProperties) {
-    $p: null;
-    @if $i <= length($transition) {
-      $p: nth($transition, $i)
-    } @else {
-      $p: nth($defaultProperties, $i)
-    }
-    $unfoldedTransition: append($unfoldedTransition, $p);
-  }
-
-  @return $unfoldedTransition;
-}*/
-
 $var : white;
 $pink: rgb(203,101,134);
 $pink-dark: rgb(204, 71, 114);
@@ -79,15 +46,19 @@ $buttonWidth: 100px;
       background-repeat: no-repeat;
 
       &.bg1 {
-        background-image: url("../img/bg1.jpg");
+        background-image: url("../img/resized/MJPB.jpg");
       }
 
       &.bg2 {
-        background-image: url("../img/bg2.jpg");
+        background-image: url("../img/resized/WB.jpg");
       }
 
       &.bg3 {
-        background-image: url("../img/bg3.jpg");
+        background-image: url("../img/resized/DB.jpg");
+      }
+
+      &.bg4 {
+        background-image: url("../img/resized/HSPB.jpg");
       }
 
       &.active {
@@ -132,15 +103,19 @@ $buttonWidth: 100px;
       background-repeat: no-repeat;
 
       &.bg1 {
-        background-image: url("../img/bg1.jpg");
+        background-image: url("../img/resized/MJPB.jpg");
       }
 
       &.bg2 {
-        background-image: url("../img/bg2.jpg");
+        background-image: url("../img/resized/WB.jpg");
       }
 
       &.bg3 {
-        background-image: url("../img/bg3.jpg");
+        background-image: url("../img/resized/DB.jpg");
+      }
+
+      &.bg4 {
+        background-image: url("../img/resized/HSPB.jpg");
       }
 
       &.active {
@@ -319,6 +294,10 @@ $buttonWidth: 100px;
     @include opacity(0);
     @include transition(opacity .5s ease-out .5s, top .5s ease-out .5s);
 
+    &.gone {
+      display:none;
+    }
+
     &.open {
       @include opacity(1);
       left:0;
@@ -343,6 +322,7 @@ $buttonWidth: 100px;
 
       & section {
         margin-bottom:2.5rem;
+        text-align: center;
 
         & h4 {
           font-size:1.35rem;
@@ -350,17 +330,19 @@ $buttonWidth: 100px;
           font-weight: 300;
           color:$pink;
           margin-bottom:.5rem;
-
+          text-align: left;
         }
 
         & p {
           font-size: .85rem;
           color:#666;
           line-height: 1.35em;
+          text-align: left;
         }
 
         & img {
           max-width:calc(100vw - 20vw);
+          display:inline-block;
         }
       }
     }
@@ -505,10 +487,28 @@ $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1250px) {
   #preview-box {
     height:415px;
     width:962.5px;
     left:calc(50vw - 962.5px / 2);
+  }
+  .expand-content {
+
+
+    & .project {
+      padding-left: calc(50vw - 500px);
+      padding-right: calc(50vw - 500px);
+
+      & .information {
+
+        & section {
+
+          & .img {
+
+          }
+        }
+      }
+    }
   }
 }
