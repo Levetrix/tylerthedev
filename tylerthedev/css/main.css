@@ -2,7 +2,7 @@
 /* line 10, ../scss/main.scss */
 .button {
   height: 42px;
-  width: 100px;
+  min-width: 100px;
   background-color: white;
   border: 2px solid #b21127;
   padding-top: .5rem;
@@ -237,7 +237,7 @@
 }
 /* line 204, ../scss/main.scss */
 #preview-box .content .tags {
-  margin-top: 3.25rem;
+  margin-top: 1.75rem;
   font-family: "Raleway";
   font-style: italic;
   font-size: 1.125rem;
@@ -271,7 +271,7 @@
 /* line 238, ../scss/main.scss */
 #preview-box .next, #preview-box .previous {
   position: absolute;
-  bottom: 0px;
+  bottom: 1rem;
 }
 /* line 244, ../scss/main.scss */
 #preview-box .next {
