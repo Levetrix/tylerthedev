@@ -22,21 +22,21 @@ $buttonWidth: 100px;
   z-index: 15;
 }
 
-.closer {
-  @include opacity(.3);
-}
-.closeProject:hover .closer {
-  @include opacity(.6);
-}
 .closer:before, .closer:after {
   position: absolute;
-  right: 23px;
-  top:-8px;
+  right: 15px;
+  top:0px;
   content: ' ';
   height: 100%;
   width: 2px;
-  background-color: #333;
+  background-color: #444;
+  @include transition(background-color, .3s, ease-in);
 }
+
+.closeProject:hover .closer:before, .closeProject:hover .closer:after {
+  background-color: $pink;
+}
+
 .closer:before {
   transform: rotate(45deg);
 }
@@ -50,6 +50,37 @@ $buttonWidth: 100px;
   width:100vw;
   font-family: "Roboto";
   overflow:hidden;
+
+  & #profileButton {
+    position:absolute;
+    top:2rem;
+    right:10vw;
+    z-index: 10;
+    //padding:.5rem;
+    cursor: pointer;
+    @include single-box-shadow(0px, 1px, 5px, 0px, rgba(100,100,100,.0));
+    @include transition(all, .3s, ease-in);
+
+    & svg {
+      height: 30px;
+      width: 30px;
+      fill:#444;
+      @include transition(all, .3s, ease-in);
+
+      & g {
+        mix-blend-mode: multiply;
+      }
+    }
+
+    &:hover {
+      @include border-radius(6px);
+      @include single-box-shadow(0px, 1px, 5px, 0px, rgba(100,100,100,.0));
+
+      & svg {
+        fill:$pink;
+      }
+    }
+  }
 
   & > .backgrounds {
     position: absolute;
@@ -301,8 +332,8 @@ $buttonWidth: 100px;
       position:fixed;
       top:0;
       right:-100vw;
-      height:4rem;
-      width:4rem;
+      height:2rem;
+      width:2rem;
       //background-color:#999;
       cursor: pointer;
       z-index: 26;
@@ -361,16 +392,41 @@ $buttonWidth: 100px;
         }
 
         & p {
-          font-size: .85rem;
+          font-size: .95rem;
           color:#666;
           line-height: 1.35em;
           text-align: left;
+          max-width: 650px;
         }
 
         & img {
           max-width:calc(100vw - 20vw);
           display:inline-block;
           @include single-box-shadow(0px, 1px, 5px, 0px, rgba(100,100,100,.45));
+        }
+      }
+    }
+
+    &.profile {
+      & .information {
+        & section {
+          & p {
+          }
+
+          & a {
+            color:$pink;
+            border-bottom: #888 1px solid;
+            text-decoration: none;
+
+            &:visited {
+              color:$pink;
+            }
+
+            &:hover {
+              color:$pink;
+            }
+
+          }
         }
       }
     }
@@ -527,10 +583,20 @@ $buttonPosition: calc(#{$buttonLowerPosition} - #{$buttonHeight} * 1.75);
 }
 
 @media screen and (min-width: 1250px) {
+#main #profileButton {
+  right:calc(50vw - 500px);
+}
+
+.expand-content.open .returnContainer .closeProject {
+  margin-right:calc(50vw - 500px);
+}
+
   #preview-box {
-    height:415px;
-    width:962.5px;
-    left:calc(50vw - 962.5px / 2);
+    height:430px;
+    //width:962.5px;
+    width:1000px;
+    //left:calc(50vw - 962.5px / 2);
+    left:calc(50vw - 1000px / 2);
   }
   .expand-content {
 

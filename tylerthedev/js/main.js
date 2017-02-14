@@ -1,7 +1,7 @@
 var projCount = 1;
 var numProjects;
 var projTimer = 250;
-
+var profileOpen = false;
 $(document).ready(function() {
   bindNextPrev();
   bindOpenView();
@@ -43,11 +43,19 @@ function previous(){
   setTimeout(postAnimation, projTimer);
 }
 
-function openView(){
+function openView(e){
   $(".expand-content").addClass("open");
-  $(".project:nth-of-type(" + projCount + ")").addClass("open");
 
-  $(".project:not(:nth-of-type(" + projCount + "))").addClass("gone");
+  if(e.currentTarget.id == "profileButton"){
+    profileOpen = true;
+    $(".project:last-of-type").addClass("open");
+    $(".project:not(:last-of-type").addClass("gone");
+
+  } else {
+    $(".project:nth-of-type(" + projCount + ")").addClass("open");
+    $(".project:not(:nth-of-type(" + projCount + "))").addClass("gone");
+  }
+
 
   unbindOpenView();
   unbindNextPrev();
@@ -59,11 +67,18 @@ function closeView(){
   unbindCloseView();
 
   $(".expand-content").addClass("leaving");
-  $(".project:nth-of-type(" + projCount + ")").addClass("leaving");
 
-  $(".project:not(:nth-of-type(" + projCount + "))").removeClass("gone");
+  if(profileOpen){
+    $(".project:last-of-type").addClass("leaving");
+    $(".project:not(:last-of-type)").removeClass("gone");
+    profileOpen = false;
+  } else {
+    $(".project:nth-of-type(" + projCount + ")").addClass("leaving");
+    $(".project:not(:nth-of-type(" + projCount + "))").removeClass("gone");
+  }
 
-  setTimeout(function(){
+
+  setTimeout(function(type){
     $(".leaving").removeClass("open").removeClass("leaving");
     console.log("animation stopped");
   }, 750);
@@ -75,6 +90,7 @@ function closeView(){
 
 function bindOpenView(){
     $(".expandButton").on("click", openView);
+    $("#profileButton").on("click", openView);
 }
 
 function bindCloseView(){
@@ -83,6 +99,7 @@ function bindCloseView(){
 
 function unbindOpenView(){
   $(".expandButton").off("click", openView);
+  $("#profileButton").off("click", openView);
 }
 
 function unbindCloseView(){
