@@ -48,8 +48,8 @@ function openView(e){
 
   if(e.currentTarget.id == "profileButton"){
     profileOpen = true;
-    $(".project:last-of-type").addClass("open");
-    $(".project:not(:last-of-type").addClass("gone");
+    $(".project:last-of-type()").addClass("open");
+    $(".project:not(:last-of-type()").addClass("gone");
 
   } else {
     $(".project:nth-of-type(" + projCount + ")").addClass("open");
@@ -70,11 +70,11 @@ function closeView(){
 
   if(profileOpen){
     $(".project:last-of-type").addClass("leaving");
-    $(".project:not(:last-of-type)").removeClass("gone");
+    //$(".project:not(:last-of-type)").removeClass("gone");
     profileOpen = false;
   } else {
     $(".project:nth-of-type(" + projCount + ")").addClass("leaving");
-    $(".project:not(:nth-of-type(" + projCount + "))").removeClass("gone");
+    //$(".project:not(:nth-of-type(" + projCount + "))").removeClass("gone");
   }
 
 
